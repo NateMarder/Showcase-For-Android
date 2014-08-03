@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -20,7 +21,7 @@ import java.util.ArrayList;
  * Created by Nathan on 7/29/2014.
  */
 
-public class ListViewActivity1 extends ListActivity {
+public class Activity_ListView extends ListActivity {
     //object/data declarations...
     private static final String TAG_ACTIVITYNAME = "title";
     private static final String TAG_DESCRIPTION = "shortDesc";
@@ -28,9 +29,10 @@ public class ListViewActivity1 extends ListActivity {
     private static final String TAG_URLs = "urls_arraylist_of_arrays";
     private static final String TAG_POSITION = "position";
     private static final String TAG_SIZE = "size";
+    private static final String TAG_OPTION = "1";
     protected static ArrayList<RezObject> thisBook = new ArrayList<RezObject>();
-    public static Intent i;
-    ListView mainListView;
+    protected static Intent i;
+    protected static ListView mainListView;
 
 
     @Override
@@ -40,29 +42,60 @@ public class ListViewActivity1 extends ListActivity {
         setContentView(R.layout.factivity5_layout); //links this activity to the it's corresponding .xml layout resource
         mainListView = getListView();
         thisBook = Activity_Splash.getBook();
-        ListAdapter rezdapter = new ListViewAdapter(ListViewActivity1.this, R.layout.listview_singlerow_layout, thisBook);
+
+        //get the user's choice so we know which onClickListener to initiate
+        i = getIntent();
+        int option = i.getIntExtra(TAG_OPTION, -1);
+
+        //populate the Listview using data supplied by the rezdapter
+        ListAdapter rezdapter = new ListViewAdapter(Activity_ListView.this, R.layout.listview_singlerow_layout, thisBook);
         setListAdapter(rezdapter);
 
-        /**Depending on which item is clicked, different data is passed from the 1st to 2nd activities.
-         * Data is gathered from the mainListView, which gathers data from the this activity's
-         * ListView of which there's only one.
-         * **/
+        //Where to go next, method 1 or method 2....
+        switch (option) {
 
-         mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent in = new Intent(ListViewActivity1.this, FragActivity_NestedGallery.class);
-                in.putExtra(TAG_ACTIVITYNAME, thisBook.get(position).getTitle());
-                in.putExtra(TAG_DESTINATION, thisBook.get(position).getDest());
-                in.putExtra(TAG_DESCRIPTION, thisBook.get(position).getDesc());
-                in.putExtra(TAG_POSITION,position);
-                in.putExtra(TAG_SIZE,thisBook.size());
-                in.putStringArrayListExtra(TAG_URLs, thisBook.get(position).getImageURLCollection());
-                startActivity(in);
-            }
-        });
+            case 1: // case one intent initiates FragActivity_NestedGallery
+                mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent in = new Intent(Activity_ListView.this, FragActivity_NestedGallery.class);
+                        in.putExtra(TAG_ACTIVITYNAME, thisBook.get(position).getTitle());
+                        in.putExtra(TAG_DESTINATION, thisBook.get(position).getDest());
+                        in.putExtra(TAG_DESCRIPTION, thisBook.get(position).getDesc());
+                        in.putExtra(TAG_POSITION, position);
+                        in.putExtra(TAG_SIZE, thisBook.size());
+                        in.putStringArrayListExtra(TAG_URLs, thisBook.get(position).getImageURLCollection());
+                        startActivity(in);
+                    }
+                });
+                break;
 
-        Log.i("System.out", "---> ListViewActivity1");
+            case 2: // case two intent initiates FragActivity_VerticalSlide
+                mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent in = new Intent(Activity_ListView.this, FragtActivity_VertSlide.class);
+                        in.putExtra(TAG_POSITION, position);
+                        startActivity(in);
+                    }
+                });
+                break;
+
+            case -1: // case -1 means something went wrong, but user still goes to FragActivity_VerticalSlide
+                mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Toast toast = new Toast(Activity_ListView.this);
+                        toast.makeText(Activity_ListView.this, "Hmmmm...", Toast.LENGTH_SHORT).show();
+                        //even though something went wrong lets not stop the action....
+                        Intent in = new Intent(Activity_ListView.this, FragtActivity_VertSlide.class);
+                        in.putExtra(TAG_POSITION, position);
+                        startActivity(in);
+                    }
+                });
+                break;
+        }//ends switch statement that sets mainListView.setOnItemClickListener
+        Log.i("System.out", "---> Activity_ListView");
     }
 
 
@@ -95,7 +128,7 @@ public class ListViewActivity1 extends ListActivity {
             ViewHolder holder = null;
 
             if (view == null) {
-                LayoutInflater inflater = ListViewActivity1.this.getLayoutInflater();
+                LayoutInflater inflater = Activity_ListView.this.getLayoutInflater();
                 view = inflater.inflate(resource, parent, false);
                 holder = new ViewHolder();
                 holder.txtTitle = (TextView) view.findViewById(R.id.TextView_Title_ListView2);

@@ -16,6 +16,8 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import java.util.ArrayList;
 
 public class Activity_MainOptions extends Activity {
+    private static final String TAG_OPTION = "1";
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,7 +29,8 @@ public class Activity_MainOptions extends Activity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Activity_MainOptions.this,ListViewActivity1.class);
+                Intent i = new Intent(Activity_MainOptions.this,Activity_ListView.class);
+                i.putExtra(TAG_OPTION, 1);
                 startActivity(i);
             }
         });
@@ -36,7 +39,8 @@ public class Activity_MainOptions extends Activity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Activity_MainOptions.this, ListViewActivity2.class);
+                Intent i = new Intent(Activity_MainOptions.this, Activity_ListView.class);
+                i.putExtra(TAG_OPTION,2);
                 startActivity(i);
 
             }
