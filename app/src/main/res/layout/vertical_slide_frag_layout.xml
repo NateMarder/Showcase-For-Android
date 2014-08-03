@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FF212121"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:weightSum="1">
+
+    <!-- Activity Title Label -->
+    <TextView
+        android:id="@+id/TextView_Layout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:text="@string/activity_title"
+        android:background="#FF212121"
+        android:textColor="#ff2063ff"
+        android:textSize="50sp"
+        android:gravity="center_horizontal"
+        android:layout_alignParentTop="true" />
+
+    <!-- location label -->
+    <TextView
+        android:id="@+id/TextView_Layout2"
+        android:isScrollContainer="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:text="@string/activity_location"
+        android:background="#FF212121"
+        android:textColor="#FFC8C8C8"
+        android:textSize="40sp"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/TextView_Layout1" />
+
+
+    <!-- description label -->
+    <TextView
+        android:id="@+id/TextView_Layout3"
+        android:layout_width="fill_parent"
+        android:isScrollContainer="true"
+        android:layout_height="wrap_content"
+        android:paddingTop="6dip"
+        android:text="@string/activity_description"
+        android:textSize="30sp"
+        android:layout_below="@id/TextView_Layout2"
+        android:background="#FF212121"
+        android:textColor="#FFC8C8C8" />
+
+
+    <!--     THIS VIEWPAGER ELEMENT ENABLES HORIZONTAL SWIPES
+             <android.support.v4.view.ViewPager
+                 android:id="@+id/ViewPager2_ActivityDetailLayout"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"/>-->
+
+    <FrameLayout
+        android:id="@+id/FrameLayout_WithinOuterFrag"
+        android:isScrollContainer="true"
+        android:clickable="false"
+        android:layout_below="@id/TextView_Layout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ImageView_Layout"
+            android:isScrollContainer="false"
+            android:clickable="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/TextView_UnderImage_Layout"
+            android:isScrollContainer="true"
+            android:textStyle="italic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FF212121"
+            android:textColor="#ff143d9e"
+            android:textSize="20sp"
+            android:padding="3dp"
+            android:text="Click Image for Gallery "
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="72dp"
+            android:layout_gravity="right|bottom" />
+
+
+    </FrameLayout>
+
+
+</RelativeLayout>

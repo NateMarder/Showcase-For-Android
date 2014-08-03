@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FF212121"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:weightSum="1">
+
+    <!-- Name Label -->
+    <TextView
+        android:id="@+id/TextView_Title_ActivityDetailLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:text="@string/activity_title"
+        android:background="#FF212121"
+        android:textColor="#ff2063ff"
+        android:textSize="50sp"
+        android:gravity="center_horizontal"
+        android:layout_alignParentTop="true"/>
+
+    <!-- location label -->
+    <TextView
+        android:id="@+id/TextView_Location_ActivityDetailLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:text="@string/activity_location"
+        android:background="#FF212121"
+        android:textColor="#FFC8C8C8"
+        android:textSize="40sp"
+        android:gravity="center_horizontal"
+        android:layout_below="@id/TextView_Title_ActivityDetailLayout"/>
+
+    <!-- description label -->
+    <TextView
+        android:id="@+id/TextView_Description_ActivityDetailLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="6dip"
+        android:text="@string/activity_description"
+        android:textSize="30sp"
+        android:layout_below="@id/TextView_Location_ActivityDetailLayout"
+        android:background="#FF212121"
+        android:textColor="#FFC8C8C8"/>
+
+
+    <!--THIS VIEWPAGER ELEMENT ENABLES HORIZONTAL SWIPES-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/ViewPager_Horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_below="@id/TextView_Description_ActivityDetailLayout"/>
+
+</RelativeLayout>

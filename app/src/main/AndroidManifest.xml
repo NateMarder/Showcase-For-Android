@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="actrez.showcase" >
+
+    <uses-sdk
+        android:minSdkVersion="13"
+        android:targetSdkVersion="20" />
+
+    <!--From the Gradle...-->
+    <!--    android {
+        compileSdkVersion 20
+        buildToolsVersion '20.0.0'
+        defaultConfig {
+        applicationId 'actrez.showcase'
+        minSdkVersion 13
+        targetSdkVersion 20
+        versionCode 1
+        versionName '1.0'
+        }-->
+
+    <!-- Internet Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Permission to write to external storage -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <!-- This is the Splash Activity -->
+        <activity
+            android:name=".Activity_Splash"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- This is the Main options Activity -->
+        <activity
+            android:name=".Activity_MainOptions"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+                <action android:name="android.intent.action.SEND" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".FragActivity_NestedGallery"
+            android:label="Contact" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <action android:name="android.intent.action.GET_CONTENT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="actrez.showcase.ActMain_Options" />
+        </activity>
+
+        <activity
+            android:name=".ListViewActivity1"
+            android:label="Activity1" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <action android:name="android.intent.action.GET_CONTENT" />
+            </intent-filter>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="actrez.showcase.ActMain_Options" />
+
+        </activity>
+
+        <activity
+            android:name=".ListViewActivity2"
+            android:label="Activity1" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <action android:name="android.intent.action.GET_CONTENT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".FragtActivity_VertSlide"
+            android:label="Activity2" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <action android:name="android.intent.action.GET_CONTENT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".FragActivity_ImageGallery"
+            android:label="Activity4" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <action android:name="android.intent.action.GET_CONTENT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".PrefActivity_Settings"
+            android:label="@string/title_activity_settings" >
+        </activity>
+
+    </application>
+
+</manifest>

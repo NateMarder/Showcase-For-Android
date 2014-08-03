@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Showcase-For-Android</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_single_contact">SingleContactActivity</string>
+    <string name="activity_bar">  Welcome to Showcase</string>
+    <string name="imageView_detail">First activity image available</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="activity_title">Activity Title</string>
+    <string name="activity_location">Location</string>
+    <string name="activity_description">This is the description of the activity, it can be around 400 characters.</string>
+    <string name="image_count">imageURLS: 7</string>
+    <string name="content_description_splash">ActivityRez Logo</string>
+    <string name="application_name_splash">Items Loading…</string>
+    <string name="application_name_main">Welcome to Showcase</string>
+
+    <string-array name="devices">
+        <item>Windows Phone</item>
+        <item>Android</item>
+        <item>iPhone</item>
+    </string-array>
+
+
+    <string name="hello_from_main">Hello from main activity!</string>
+    <string name="title_activity_splash">Splash</string>
+
+</resources>
