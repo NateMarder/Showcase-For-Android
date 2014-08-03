@@ -21,6 +21,7 @@ public class Activity_MainOptions extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+            //if this activity is not already destroyed...
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_options_layout); //links this activity to the it's corresponding .xml layout resource
 
@@ -32,6 +33,7 @@ public class Activity_MainOptions extends Activity {
                 Intent i = new Intent(Activity_MainOptions.this,Activity_ListView.class);
                 i.putExtra(TAG_OPTION, 1);
                 startActivity(i);
+
             }
         });
         Button button2 = (Button) findViewById(R.id.button2);

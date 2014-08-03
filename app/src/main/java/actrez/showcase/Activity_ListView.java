@@ -53,7 +53,6 @@ public class Activity_ListView extends ListActivity {
 
         //Where to go next, method 1 or method 2....
         switch (option) {
-
             case 1: // case one intent initiates FragActivity_NestedGallery
                 mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
