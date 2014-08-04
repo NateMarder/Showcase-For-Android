@@ -138,10 +138,10 @@ public class Activity_ListView extends ListActivity {
             } else {
                 holder = (ViewHolder) view.getTag();
             }
-            String title = activitiesToDisplay.get(position).getTitle();
-            String location = activitiesToDisplay.get(position).getDest();/*+" image count: "+activitiesToDisplay.get(position).getImageCount();*/
+            String title = activitiesToDisplay.get(position).getTitle().trim();
+            String location = activitiesToDisplay.get(position).getDest().trim();/*+" image count: "+activitiesToDisplay.get(position).getImageCount();*/
             String imageCount = "Images: "+activitiesToDisplay.get(position).getImageCount()+" ";
-            String description = activitiesToDisplay.get(position).getDesc();
+            String description = activitiesToDisplay.get(position).getDesc().trim();
             holder.txtTitle.setText(title);
             holder.txtLocation.setText(location);
             holder.txtImageCount.setText(imageCount);

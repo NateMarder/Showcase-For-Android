@@ -20,8 +20,8 @@ public class ServiceHandler_API {
     static String response = null;
     public final static int GET = 1;
     public final static int POST = 2;
-    public ServiceHandler_API() {
 
+    public ServiceHandler_API() {
     }
 
     public String makeServiceCall(String url, int method) {
@@ -59,22 +59,18 @@ public class ServiceHandler_API {
                 // the HttpGet-object is then passed into an the httpClient object, as a parameter to the
                 // httpClient's 'execute' method, which was returns an httpResponse object...
                 httpResponse = httpClient.execute(httpGet);
-
             }
-
-        httpEntity = httpResponse.getEntity();
-        response = EntityUtils.toString(httpEntity);
-
+            httpEntity = httpResponse.getEntity();
+            response = EntityUtils.toString(httpEntity);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (ClientProtocolException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
         }
         return response;
-
     }
 }

@@ -34,7 +34,6 @@ public class FragtActivity_VertSlide extends FragmentActivity {
         Log.i("System.out", "---> FragActivity_VertSlide");
     }
 
-
     //This inner class Feeds fragment instances into vertical view pager instance...
     private class FragPagerAdapter extends FragmentPagerAdapter {
         private static final String TitleKey = "title_key";
@@ -93,11 +92,6 @@ public class FragtActivity_VertSlide extends FragmentActivity {
             return activities.size();
         }
     }//ends FragmentPagerAdapter Class
-
-/*    public static int getIndexPosition(){
-        return indexPosition;
-    }*/
-
 }
 
 

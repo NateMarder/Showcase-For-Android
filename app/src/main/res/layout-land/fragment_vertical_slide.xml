@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF212121"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_gravity="center"
+    android:weightSum="3">
+    <FrameLayout
+        android:id="@+id/TopFrame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+        <!--This is the Activity Title -->
+        <TextView
+            android:id="@+id/TextView_Layout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_title"
+            android:background="#FF212121"
+            android:textColor="#ff2063ff"
+            android:textSize="50sp"
+            android:isScrollContainer="true"
+            android:gravity="center_horizontal|left"
+            android:padding="20dp" />
+    </FrameLayout>
+
+    <!--    Left Side of Screen With Words-->
+    <LinearLayout
+        android:id="@+id/LocationDescription_Container"
+        android:orientation="vertical"
+        android:layout_width="469dp"
+        android:layout_height="fill_parent"
+        android:isScrollContainer="true"
+        android:gravity="center"
+        android:layout_below="@+id/TopFrame"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="20dp"
+        android:weightSum="1">
+        <!-- location label -->
+        <TextView
+            android:id="@+id/TextView_Layout2"
+            android:isScrollContainer="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_location"
+            android:background="#FF212121"
+            android:textColor="#FFC8C8C8"
+            android:textSize="40sp"
+            android:gravity="left"
+            android:textStyle="italic"
+            android:paddingBottom="10dp"/>
+        <!-- description label -->
+        <TextView
+            android:id="@+id/TextView_Layout3"
+            android:layout_width="fill_parent"
+            android:isScrollContainer="true"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_description"
+            android:textSize="30sp"
+            android:background="#FF212121"
+            android:textColor="#ffadadad" />
+    </LinearLayout>
+
+<!--    This is the Right Hand Side-->
+    <LinearLayout
+        android:id="@+id/LinearLayout_RightSide_WithinOuterFrag"
+        android:isScrollContainer="true"
+        android:layout_below="@+id/TopFrame"
+        android:clickable="false"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/LocationDescription_Container"
+        android:gravity="center"
+        android:weightSum="1">
+        <ImageView
+            android:id="@+id/ImageView_Layout"
+            android:isScrollContainer="false"
+            android:clickable="true"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arezlogo"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+            <TextView
+                android:id="@+id/TextView_UnderImage_Layout"
+                android:isScrollContainer="true"
+                android:textStyle="bold|italic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FF212121"
+                android:textColor="#ff184dc5"
+                android:textSize="25sp"
+                android:padding="3dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:paddingRight="17dp" />
+</RelativeLayout>

@@ -34,7 +34,7 @@ public class FragmentForVertSlide extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.vertical_slide_frag_layout, container, false);
+        View view = inflater.inflate(R.layout.fragment_vertical_slide, container, false);
         Bundle bundle = getArguments();
 
         //Prepare image loader, and don't prevent it from re-initializing
@@ -61,6 +61,10 @@ public class FragmentForVertSlide extends Fragment {
         textView2.setText(location);
         TextView textView3 = (TextView) view.findViewById(R.id.TextView_Layout3);
         textView3.setText(description);
+        TextView textView4 = (TextView) view.findViewById(R.id.TextView_UnderImage_Layout);
+        //Only click for gallery if there is one
+        if (imageURL_array.length>1){ textView4.setText("Click Image For Gallery "); }
+
         ImageView imageView = (ImageView) view.findViewById(R.id.ImageView_Layout);
         this.imageLoader.displayImage(imageURL_array[0], imageView);
         imageView.isClickable();
@@ -80,6 +84,5 @@ public class FragmentForVertSlide extends Fragment {
         });//ends onclickListener
         Log.i("System.out", "---> FragmentForVertSlide");
         return view;
-
     }
 }//Ends Main FragmentForVertSlide Class...

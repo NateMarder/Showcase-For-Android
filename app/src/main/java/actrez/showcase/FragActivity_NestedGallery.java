@@ -1,21 +1,21 @@
 package actrez.showcase;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+        import android.content.Context;
+        import android.content.Intent;
+        import android.os.Bundle;
+        import android.support.v4.app.FragmentActivity;
+        import android.support.v4.view.PagerAdapter;
+        import android.support.v4.view.ViewPager;
+        import android.util.Log;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.widget.ImageView;
+        import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+        import com.nostra13.universalimageloader.core.ImageLoader;
+        import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
-import java.util.ArrayList;
+        import java.util.ArrayList;
 
 
 public class FragActivity_NestedGallery extends FragmentActivity {
@@ -45,14 +45,17 @@ public class FragActivity_NestedGallery extends FragmentActivity {
         TextView lblName = (TextView)findViewById(R.id.TextView_Title_ActivityDetailLayout);
         TextView lblDest = (TextView) findViewById(R.id.TextView_Location_ActivityDetailLayout);
         TextView lblDesc = (TextView) findViewById(R.id.TextView_Description_ActivityDetailLayout);
+        TextView lblBottomRight = (TextView) findViewById(R.id.TextView_UnderImage_Layout);
         pager = (ViewPager) findViewById(R.id.ViewPager_Horizontal);
 
         lblName.setText(in.getStringExtra(TAG_NAME));
         lblDest.setText(in.getStringExtra(TAG_DESTINATION));
         lblDesc.setText(in.getStringExtra(TAG_DESCRIPTION));
+        if (imageURLs.length>1){ lblBottomRight.setText("Swipe For Next Image ");}
+
         pager.setAdapter(new GalleryImage(FragActivity_NestedGallery.this, imageURLs));
         pager.setCurrentItem(pagerPosition);
-        Log.i("System.out", "---> FragActivity_NestedGallery");
+        Log.i("System.out", "---> FragActivity_NestedGallery ");
     }
 
     class GalleryImage extends PagerAdapter {
@@ -85,7 +88,6 @@ public class FragActivity_NestedGallery extends FragmentActivity {
         public Object instantiateItem(View view, int position) {
             final View imageLayout = inflater.inflate(R.layout.imageview_container_layout, null);
             final ImageView imageView = (ImageView) imageLayout.findViewById(R.id.ImageView_ActivityImage_Layout);
-/*            imageLoader.displayImage(images[position], imageView, options);*/
             imageLoader.displayImage(images[position], imageView);
             ((ViewPager) view).addView(imageLayout, 0);
             return imageLayout;
@@ -96,6 +98,4 @@ public class FragActivity_NestedGallery extends FragmentActivity {
             return view.equals(object);
         }
     }
-
-
 }

@@ -144,7 +144,6 @@ public class Activity_Splash extends Activity {
             Activity_Splash.this.finish();//remove Activity from the Activity Stack
         }
     }//ends async task
-
     protected static ArrayList<RezObject> getBook() {
         return activityBook;
     }
