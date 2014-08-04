@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -26,12 +27,29 @@ public class FragActivity_ImageGallery extends FragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
         setContentView(R.layout.viewpager_container_layout);
+
+        //The Exit Gallery Button...
+        Button exitGallery = (Button) findViewById(R.id.Button_ExitGallery);
+
+
         Intent in = getIntent();//this data is being sent from FragtActivity_VertSlide
         imageURLs=in.getStringArrayExtra(TAG_URLs_ARRAY);
         pager = (ViewPager) findViewById(R.id.ViewPager_Horizontal);
         pager.setAdapter(new GalleryImage(FragActivity_ImageGallery.this, imageURLs));
         pager.setCurrentItem(pagerPosition);
+
+        exitGallery.setText("Exit Gallery ");
+        exitGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragActivity_ImageGallery.this.finish(); //User goes to whats next on the Activity Stack
+            }
+        });
+
         Log.i("System.out", "---> FragActivity_ImageGallery");
     }
 
