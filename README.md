@@ -1,4 +1,4 @@
-view the demo: http://youtu.be/OZvl7Y_t5mk
+view the demo: http://youtu.be/1Q39_jv6tH0
 
 Android application for displaying activities for ActivityRez, a company based in Honolulu Hawaii. 
 The application was authored by Nathan Marder in 2014. This was the author's VERY first Android application, 
