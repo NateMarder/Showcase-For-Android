@@ -1,21 +1,20 @@
 package actrez.showcase;
 
         import android.content.Context;
-        import android.content.Intent;
-        import android.os.Bundle;
-        import android.support.v4.app.FragmentActivity;
-        import android.support.v4.view.PagerAdapter;
-        import android.support.v4.view.ViewPager;
-        import android.util.Log;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.widget.ImageView;
-        import android.widget.TextView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-        import com.nostra13.universalimageloader.core.ImageLoader;
-        import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
 
 public class FragActivity_NestedGallery extends FragmentActivity {
@@ -55,7 +54,6 @@ public class FragActivity_NestedGallery extends FragmentActivity {
 
         pager.setAdapter(new GalleryImage(FragActivity_NestedGallery.this, imageURLs));
         pager.setCurrentItem(pagerPosition);
-        Log.i("System.out", "---> FragActivity_NestedGallery ");
     }
 
     class GalleryImage extends PagerAdapter {

@@ -3,7 +3,6 @@ package actrez.showcase;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,7 +62,7 @@ public class FragmentForVertSlide extends Fragment {
         textView3.setText(description);
         TextView textView4 = (TextView) view.findViewById(R.id.TextView_UnderImage_Layout);
         //Only click for gallery if there is one
-        if (imageURL_array.length>1){ textView4.setText("Click Image For Gallery "); }
+        if (imageURL_array.length>1){ textView4.setText("(Click Image For Gallery) "); }
 
         ImageView imageView = (ImageView) view.findViewById(R.id.ImageView_Layout);
         this.imageLoader.displayImage(imageURL_array[0], imageView);
@@ -71,7 +70,7 @@ public class FragmentForVertSlide extends Fragment {
         imageView.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //do this when clicked...
-                if (imageURL_array[0].matches("http://www.clubwebsite.co.uk/img/misc/noImageAvailable.jpg")) {
+                if (imageURL_array[0].matches("https://5bf9fc6a06a40f21655de95c16758804f9ccd7fd.googledrive.com/host/0BxqBg0gGtrRkR1ktQ2FSQmNMR2s/no_images.png")) {
                     Toast toast = new Toast(FragmentForVertSlide.this.getActivity());
                     toast.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL, 0, 0);
                     Toast.makeText(FragmentForVertSlide.this.getActivity(), "Sorry, no images!", Toast.LENGTH_SHORT).show();
@@ -82,7 +81,6 @@ public class FragmentForVertSlide extends Fragment {
                 }
             }
         });//ends onclickListener
-        Log.i("System.out", "---> FragmentForVertSlide");
         return view;
     }
 }//Ends Main FragmentForVertSlide Class...

@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class RezObject implements Parcelable {
     private String title;
@@ -65,15 +66,26 @@ public class RezObject implements Parcelable {
 
     //getters and setters....
     public void addDesc(String desc) {
-        this.description = desc;
+        //This business gets rid of short descriptions with spacing and mistakes and
+        //also combines multiple paragraphs into one which makes formatting easier
+        StringTokenizer tokenizer = new StringTokenizer(desc);
+        String next = tokenizer.nextToken();
+        while (tokenizer.hasMoreElements()){
+            if (next.endsWith(".") || next.endsWith("!") || next.endsWith("?")) {
+                next += "  " + tokenizer.nextToken();
+            } else {
+                next += " " + tokenizer.nextToken();
+            }
+        }
+        this.description = next;
     }
 
     public void addDest(String dest) {
-        this.destination = dest;
+        this.destination = dest.trim();
     }
 
     public void addTitle(String title) {
-        this.title = title;
+        this.title = title.trim();
     }
 
     public void addImageURL(String hash) {
@@ -101,15 +113,16 @@ public class RezObject implements Parcelable {
 
     public ArrayList getImageURLCollection() {
         if (this.imageURLS_arraylist.size() == 0) {
-            imageURLS_arraylist.add("http://www.clubwebsite.co.uk/img/misc/noImageAvailable.jpg");
+            imageURLS_arraylist.add("https://5bf9fc6a06a40f21655de95c16758804f9ccd7fd.googledrive.com/host/0BxqBg0gGtrRkR1ktQ2FSQmNMR2s/no_images.png");
         }
         return this.imageURLS_arraylist;
     }
 
+    // Converts ArrayList to  STRING ARRAY then returns it...
     public String[] getImageURL_ArrayCollection() {
         //avoid null pointer exceptions...
         if (imageURLS_arraylist.size() == 0) {
-            String emptyURL = "http://www.clubwebsite.co.uk/img/misc/noImageAvailable.jpg";//stupid cat
+            String emptyURL = "https://5bf9fc6a06a40f21655de95c16758804f9ccd7fd.googledrive.com/host/0BxqBg0gGtrRkR1ktQ2FSQmNMR2s/no_images.png";
             imageURLS_arraylist.add(emptyURL);
         }
         //convert arraylist <String> to String[]

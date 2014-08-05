@@ -4,7 +4,6 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,7 +93,6 @@ public class Activity_ListView extends ListActivity {
                 });
                 break;
         }//ends switch statement that sets mainListView.setOnItemClickListener
-        Log.i("System.out", "---> Activity_ListView");
     }
 
 
@@ -138,10 +136,10 @@ public class Activity_ListView extends ListActivity {
             } else {
                 holder = (ViewHolder) view.getTag();
             }
-            String title = activitiesToDisplay.get(position).getTitle().trim();
-            String location = activitiesToDisplay.get(position).getDest().trim();/*+" image count: "+activitiesToDisplay.get(position).getImageCount();*/
+            String title = activitiesToDisplay.get(position).getTitle();
+            String location = activitiesToDisplay.get(position).getDest();/*+" image count: "+activitiesToDisplay.get(position).getImageCount();*/
             String imageCount = "Images: "+activitiesToDisplay.get(position).getImageCount()+" ";
-            String description = activitiesToDisplay.get(position).getDesc().trim();
+            String description = activitiesToDisplay.get(position).getDesc();
             holder.txtTitle.setText(title);
             holder.txtLocation.setText(location);
             holder.txtImageCount.setText(imageCount);

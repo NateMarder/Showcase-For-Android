@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,8 +32,6 @@ public class Activity_Splash extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        Log.i("System.out", "---> Activity_Splash");
-        //ensuring orientation and layout are accurate and responsive...
         setContentView(R.layout.activity_splash_layout);
         ImageView imageView = (ImageView) findViewById(R.id.imageView_splash);
         TextView textView = (TextView) findViewById(R.id.textView_splash);
@@ -81,10 +78,12 @@ public class Activity_Splash extends Activity {
 
             /**
              * There are a couple of sub-domains with dummy data.  Two of which need Web Booker IDs added...
-             * 1) https://secure.activityrez.com/wp-content/plugins/flash-api/wsrv.php?  +
+             * 1) https://-----.activityrez.com/wp-content/plugins/flash-api/wsrv.php?  +
              *    token=NEW&service=lookup&action=activities&data[showInWB]=
              * 2) https://demo.activityrez.com/wp-content/plugins/flash-api/wsrv.php?  +
              *    token=NEW&service=lookup&action=activities&data[showInWB]=
+             *
+             *    [the first URL was removed]
              */
 
             String url = "https://demo.activityrez.com/wp-content/plugins/flash-api/wsrv.php?token=" +

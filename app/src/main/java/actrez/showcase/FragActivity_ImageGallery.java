@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -49,8 +48,6 @@ public class FragActivity_ImageGallery extends FragmentActivity {
                 FragActivity_ImageGallery.this.finish(); //User goes to whats next on the Activity Stack
             }
         });
-
-        Log.i("System.out", "---> FragActivity_ImageGallery");
     }
 
     class GalleryImage extends PagerAdapter {

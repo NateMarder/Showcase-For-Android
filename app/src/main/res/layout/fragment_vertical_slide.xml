@@ -5,63 +5,25 @@
     android:layout_height="fill_parent"
     android:background="#FF212121"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
-    android:weightSum="1">
+    android:weightSum="2"
+    android:paddingLeft="20dp"
+    android:paddingTop="20dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="5dp">
 
-    <!-- Activity Title Label -->
-    <TextView
-        android:id="@+id/TextView_Layout1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="2dip"
-        android:paddingTop="6dip"
-        android:text="@string/activity_title"
-        android:background="#FF212121"
-        android:textColor="#ff2063ff"
-        android:textSize="50sp"
-        android:gravity="center_horizontal"
-        android:layout_alignParentTop="true" />
-
-    <!-- location label -->
-    <TextView
-        android:id="@+id/TextView_Layout2"
-        android:isScrollContainer="true"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="2dip"
-        android:paddingTop="6dip"
-        android:text="@string/activity_location"
-        android:background="#FF212121"
-        android:textColor="#FFC8C8C8"
-        android:textSize="40sp"
-        android:gravity="center_horizontal"
-        android:layout_below="@id/TextView_Layout1" />
-
-
-    <!-- description label -->
-    <TextView
-        android:id="@+id/TextView_Layout3"
-        android:layout_width="fill_parent"
-        android:isScrollContainer="true"
-        android:layout_height="wrap_content"
-        android:paddingTop="6dip"
-        android:text="@string/activity_description"
-        android:textSize="30sp"
-        android:layout_below="@id/TextView_Layout2"
-        android:background="#FF212121"
-        android:textColor="#FFC8C8C8"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"/>
-
-    <FrameLayout
+    <!--This is for the image...-->
+    <LinearLayout
         android:id="@+id/LinearLayout_RightSide_WithinOuterFrag"
         android:isScrollContainer="true"
         android:clickable="false"
-        android:layout_below="@id/TextView_Layout3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:orientation="vertical"
+        android:layout_alignParentStart="true"
+        android:padding="5dp"
+        android:weightSum="1">
 
         <ImageView
             android:id="@+id/ImageView_Layout"
@@ -69,23 +31,74 @@
             android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_launcher" />
+            android:layout_gravity="left"
+            android:src="@drawable/no_image_found" />
 
         <TextView
             android:id="@+id/TextView_UnderImage_Layout"
             android:isScrollContainer="true"
-            android:textStyle="italic|bold"
+            android:textStyle="italic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#FF212121"
-            android:textColor="#ff143d9e"
-            android:textSize="25sp"
-            android:padding="3dp"
-            android:layout_marginBottom="72dp"
-            android:layout_gravity="right|bottom" />
+            android:textColor="#ff8f8f8f"
+            android:textSize="20sp"
+            android:layout_gravity="left" />
+        </LinearLayout>
 
-    </FrameLayout>
+    <!--This is for the text below the image-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/LinearLayout_RightSide_WithinOuterFrag"
+        android:weightSum="1">>
+
+
+        <TextView
+            android:id="@+id/TextView_Layout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_title"
+            android:background="#FF212121"
+            android:textColor="#ff2063ff"
+            android:textSize="50sp"
+            android:paddingBottom="10dp"
+            android:gravity="left"
+            android:paddingTop="30dp" />
+
+        <TextView
+            android:id="@+id/TextView_Layout2"
+            android:isScrollContainer="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="6dip"
+            android:text="@string/activity_location"
+            android:textSize="40sp"
+            android:background="#FF212121"
+            android:textColor="#FFC8C8C8"
+            android:paddingBottom="10dp"
+            android:gravity="left|center_vertical"/>
+
+        <!-- description label -->
+        <TextView
+            android:id="@+id/TextView_Layout3"
+            android:layout_width="fill_parent"
+            android:isScrollContainer="true"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_description"
+            android:textSize="30sp"
+            android:background="#FF212121"
+            android:textColor="#FFC8C8C8"/>
+
+        </LinearLayout>
+
+
+
+
+
+
+
 
 
 </RelativeLayout>

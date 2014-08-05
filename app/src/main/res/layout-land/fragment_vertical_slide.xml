@@ -23,7 +23,10 @@
             android:textSize="50sp"
             android:isScrollContainer="true"
             android:gravity="center_horizontal|left"
-            android:padding="20dp" />
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="50dp" />
     </FrameLayout>
 
     <!--    Left Side of Screen With Words-->
@@ -33,13 +36,16 @@
         android:layout_width="469dp"
         android:layout_height="fill_parent"
         android:isScrollContainer="true"
-        android:gravity="center"
+        android:gravity="center_horizontal|top"
         android:layout_below="@+id/TopFrame"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:paddingLeft="20dp"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:paddingRight="10dp">
         <!-- location label -->
+        <!-- description label -->
+
         <TextView
             android:id="@+id/TextView_Layout2"
             android:isScrollContainer="true"
@@ -51,8 +57,8 @@
             android:textSize="40sp"
             android:gravity="left"
             android:textStyle="italic"
-            android:paddingBottom="10dp"/>
-        <!-- description label -->
+            android:paddingRight="10dp" />
+
         <TextView
             android:id="@+id/TextView_Layout3"
             android:layout_width="fill_parent"
@@ -61,7 +67,10 @@
             android:text="@string/activity_description"
             android:textSize="30sp"
             android:background="#FF212121"
-            android:textColor="#ffadadad" />
+            android:textColor="#ffadadad"
+            android:layout_gravity="center_horizontal|top"
+            android:paddingRight="10dp" />
+
     </LinearLayout>
 
 <!--    This is the Right Hand Side-->
@@ -77,29 +86,36 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/LocationDescription_Container"
-        android:gravity="center"
-        android:weightSum="1">
+        android:gravity="center_horizontal|top"
+        android:weightSum="1"
+        android:paddingRight="20dp"
+        android:paddingLeft="10dp">
         <ImageView
             android:id="@+id/ImageView_Layout"
             android:isScrollContainer="false"
             android:clickable="true"
-            android:padding="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/arezlogo"
-            android:layout_gravity="center"/>
+            android:src="@drawable/logo_fullsize"
+            android:layout_gravity="center"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp" />
+
+        <TextView
+            android:id="@+id/TextView_UnderImage_Layout"
+            android:isScrollContainer="true"
+            android:textStyle="italic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FF212121"
+            android:textColor="#ff8f8f8f"
+            android:textSize="20sp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="10dp"
+            android:paddingTop="2dp"
+            android:paddingRight="10dp"
+            android:layout_gravity="center" />
     </LinearLayout>
-            <TextView
-                android:id="@+id/TextView_UnderImage_Layout"
-                android:isScrollContainer="true"
-                android:textStyle="bold|italic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#FF212121"
-                android:textColor="#ff184dc5"
-                android:textSize="25sp"
-                android:padding="3dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                android:paddingRight="17dp" />
 </RelativeLayout>

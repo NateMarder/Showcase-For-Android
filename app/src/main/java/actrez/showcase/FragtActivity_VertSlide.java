@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -31,7 +30,6 @@ public class FragtActivity_VertSlide extends FragmentActivity {
         VerticalViewPager vertical_ViewPager = (VerticalViewPager) findViewById(R.id.VerticalViewPager_Within_FA2Layout);
         vertical_ViewPager.setAdapter(fragPagerAdapter);
         vertical_ViewPager.setCurrentItem(indexPosition);
-        Log.i("System.out", "---> FragActivity_VertSlide");
     }
 
     //This inner class Feeds fragment instances into vertical view pager instance...
