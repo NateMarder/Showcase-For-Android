@@ -26,7 +26,6 @@ public class PrefActivity_Settings extends PreferenceActivity {
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-
         setupSimplePreferencesScreen();
     }
 
@@ -69,10 +68,16 @@ public class PrefActivity_Settings extends PreferenceActivity {
     }
 
     private static boolean isSimplePreferences(Context context) {
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB;
+    }
+
+/*
+    private static boolean isSimplePreferences(Context context) {
         return ALWAYS_SIMPLE_PREFS
                 || Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB
                 || !isXLargeTablet(context);
     }
+*/
 
     @Override
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -148,6 +153,7 @@ public class PrefActivity_Settings extends PreferenceActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_general);
+
         }
     }
 

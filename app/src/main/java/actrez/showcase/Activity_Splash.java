@@ -35,19 +35,19 @@ public class Activity_Splash extends Activity {
         setContentView(R.layout.activity_splash_layout);
         ImageView imageView = (ImageView) findViewById(R.id.imageView_splash);
         TextView textView = (TextView) findViewById(R.id.textView_splash);
-        imageView.setImageResource(R.drawable.logo_fullsize2);
+        imageView.setImageResource(R.drawable.logo_fullsize);
         textView.setText("Loading Items...");
 
         /**
          * Each activity booking agency has a unique web booker ID code that can be added to
-         * there user preferences.  Depending on their we booker ID, specific activities from
+         * their user preferences.  Depending on their web booker ID, specific activities from
          * vendors they work with will automatically populate this application's RezObjects.
          * For the purposes of seeing how this application works, two different dummy IDs
-         * can be used: [114568] OR [200024].  The application's default is set to [114568]
+         * can be used: [114568] OR [200024].  The application's default is set to [200024]
          */
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        web_booker_id = sharedPref.getString("web_booker_key", "114568");
+        web_booker_id = sharedPref.getString("web_booker_key", "200024");
 
         //only get data if you need too
         if (activityBook.size() == 0) {
