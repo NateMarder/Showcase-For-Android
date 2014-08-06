@@ -1,3 +1,17 @@
+/**
+ * @Author Nate Marder [http://nathanmarder.com | https://github.com/NateMarder]
+ * @Company ActivityRez [http://activityrez.com]
+ * @Date 8/06/2014
+ * @Program_Description This program was designed as a type of kiosk-application which would allow
+ *  provide tourists and customers with a simple user interface within which they would be able to
+ *  peruse potential activities they would like to purchase.  For more info about ActivityRez and
+ *  their unique business model, see their YouTube channel below
+ *  [https://www.youtube.com/channel/UC9GOamzTVopgCIZqizjrPQQ]
+ * @Class_Description The_MainOptions class provides the user with options to change
+ *  preferences/settings, refresh data (Activity_Splash call), or to view the activities
+ *  (Activity_Listview call).
+ *
+ */
 package actrez.showcase;
 
 import android.app.Activity;
@@ -20,35 +34,22 @@ public class Activity_MainOptions extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_options_layout); //links this activity to the it's corresponding .xml layout resource
+        setContentView(R.layout.activity_main_options_layout);
 
-        //currently unused portion of application...
-/*      Button button1 = (Button) findViewById(R.id.button1);
-        button1.setText("LAUNCH METHOD 1 ");
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Activity_MainOptions.this,Activity_ListView.class);
-                i.putExtra(TAG_OPTION, 1);
-                startActivity(i);
-
-            }
-        });*/
-
-        Button button2 = (Button) findViewById(R.id.button2);
-        button2.setText("View Activities ");
-        button2.setOnClickListener(new View.OnClickListener() {
+        Button goto_ListView = (Button) findViewById(R.id.button2);
+        goto_ListView.setText("View Activities ");
+        goto_ListView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Activity_MainOptions.this, Activity_ListView.class);
-                i.putExtra(TAG_OPTION,2);
+                i.putExtra(TAG_OPTION, 2);
                 startActivity(i);
             }
         });
 
-        Button button3 = (Button) findViewById(R.id.Button3_Settings);
-        button3.setText("Settings ");
-        button3.setOnClickListener(new View.OnClickListener() {
+        Button goto_Settings = (Button) findViewById(R.id.Button3_Settings);
+        goto_Settings.setText("Settings ");
+        goto_Settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Activity_MainOptions.this, PrefActivity_Settings.class);
@@ -56,27 +57,29 @@ public class Activity_MainOptions extends Activity {
             }
         });
 
-        Button button4 = (Button) findViewById(R.id.Button4_Refresh);
-        button4.setText("Refresh ");
-        button4.setOnClickListener(new View.OnClickListener() {
+        Button goto_Refresh = (Button) findViewById(R.id.Button4_Refresh);
+        goto_Refresh.setText("Refresh ");
+        goto_Refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Activity_Splash.activityBook = new ArrayList<RezObject>();
+                Activity_Splash.activityBook = new ArrayList<RezObject>();//get rid of old data;
                 Intent i = new Intent(Activity_MainOptions.this, Activity_Splash.class);
                 startActivity(i);
                 Activity_MainOptions.this.finish();
             }
         });
 
-        if (!ImageLoader.getInstance().isInited()){ setImageLoader(); }// Set up Universal ImageLoader
+        if (!ImageLoader.getInstance().isInited()) {
+            setImageLoader();
+        }// Set up Universal ImageLoader
     }
 
     private void setImageLoader() {
-    /**
-     * The ImageLoaderConfiguration is application global, and makes methods and instances contained
-     * within the support library "Android-Universal-Image-Loader" possible.  Read more about this
-     * library here: https://github.com/nostra13/Android-Universal-Image-Loader
-     */
+        /**
+         * The ImageLoaderConfiguration is application global, and makes methods and instances contained
+         * within the support library "Android-Universal-Image-Loader" possible.  Read more about this
+         * library here: https://github.com/nostra13/Android-Universal-Image-Loader
+         */
         DisplayImageOptions defaultOptions;
         ImageLoaderConfiguration config;
 
@@ -92,6 +95,6 @@ public class Activity_MainOptions extends Activity {
                 .Builder(getApplicationContext())
                 .defaultDisplayImageOptions(defaultOptions).build();
 
-                ImageLoader.getInstance().init(config);
+        ImageLoader.getInstance().init(config);
     }
 }//ends Activity_MainOptions class

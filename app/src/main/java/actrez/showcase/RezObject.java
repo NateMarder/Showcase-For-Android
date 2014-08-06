@@ -1,3 +1,17 @@
+/**
+ * @Author Nate Marder [http://nathanmarder.com | https://github.com/NateMarder]
+ * @Company ActivityRez [http://activityrez.com]
+ * @Date 8/06/2014
+ * @Program_Description This program was designed as a type of kiosk-application which would allow
+ *  provide tourists and customers with a simple user interface within which they would be able to
+ *  peruse potential activities they would like to purchase.  For more info about ActivityRez and
+ *  their unique business model, see their YouTube channel below
+ *  [https://www.youtube.com/channel/UC9GOamzTVopgCIZqizjrPQQ]
+ * @Class_Description The RezObject class has many functions but can be summarized by stating that an
+ *  instance of this class represents an instance of an actual ActivityRez activity.  Instances from
+ *  this class are used to populate elements throughout this project.
+ *
+ */
 package actrez.showcase;
 
 import android.os.Parcel;
@@ -70,7 +84,7 @@ public class RezObject implements Parcelable {
         //also combines multiple paragraphs into one which makes formatting easier
         StringTokenizer tokenizer = new StringTokenizer(desc);
         String next = tokenizer.nextToken();
-        while (tokenizer.hasMoreElements()){
+        while (tokenizer.hasMoreElements()) {
             if (next.endsWith(".") || next.endsWith("!") || next.endsWith("?")) {
                 next += "  " + tokenizer.nextToken();
             } else {
@@ -113,6 +127,7 @@ public class RezObject implements Parcelable {
 
     public ArrayList getImageURLCollection() {
         if (this.imageURLS_arraylist.size() == 0) {
+            //no image available image hosted within a public folder within google drive
             imageURLS_arraylist.add("https://5bf9fc6a06a40f21655de95c16758804f9ccd7fd.googledrive.com/host/0BxqBg0gGtrRkR1ktQ2FSQmNMR2s/no_images.png");
         }
         return this.imageURLS_arraylist;
@@ -122,6 +137,7 @@ public class RezObject implements Parcelable {
     public String[] getImageURL_ArrayCollection() {
         //avoid null pointer exceptions...
         if (imageURLS_arraylist.size() == 0) {
+            //no image available image hosted within a public folder within google drive
             String emptyURL = "https://5bf9fc6a06a40f21655de95c16758804f9ccd7fd.googledrive.com/host/0BxqBg0gGtrRkR1ktQ2FSQmNMR2s/no_images.png";
             imageURLS_arraylist.add(emptyURL);
         }

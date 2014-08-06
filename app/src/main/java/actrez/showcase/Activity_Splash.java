@@ -1,3 +1,18 @@
+/**
+ * @Author Nate Marder [http://nathanmarder.com | https://github.com/NateMarder]
+ * @Company ActivityRez [http://activityrez.com]
+ * @Date 8/06/2014
+ * @Program_Description This program was designed as a type of kiosk-application which would allow
+ *  provide tourists and customers with a simple user interface within which they would be able to
+ *  peruse potential activities they would like to purchase.  For more info about ActivityRez and
+ *  their unique business model, see their YouTube channel below
+ *  [https://www.youtube.com/channel/UC9GOamzTVopgCIZqizjrPQQ]
+ * @Class_Description The class contains the private-inner-asynchronous class populateRezActs which is
+ *  itself responsible for grabbing data from the ActivityRez server.  This class is the lauches
+ *  the application and it automatically sends the user to the Activity_MainOptions class when
+ *  it has performed it's duty of grabbing data
+ *
+ */
 package actrez.showcase;
 
 import android.app.Activity;
@@ -143,6 +158,7 @@ public class Activity_Splash extends Activity {
             Activity_Splash.this.finish();//remove Activity from the Activity Stack
         }
     }//ends async task
+
     protected static ArrayList<RezObject> getBook() {
         return activityBook;
     }

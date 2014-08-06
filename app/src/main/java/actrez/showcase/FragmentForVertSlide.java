@@ -1,3 +1,18 @@
+/**
+ * @Author Nate Marder [http://nathanmarder.com | https://github.com/NateMarder]
+ * @Company ActivityRez [http://activityrez.com]
+ * @Date 8/06/2014
+ * @Program_Description This program was designed as a type of kiosk-application which would allow
+ *  provide tourists and customers with a simple user interface within which they would be able to
+ *  peruse potential activities they would like to purchase.  For more info about ActivityRez and
+ *  their unique business model, see their YouTube channel below
+ *  [https://www.youtube.com/channel/UC9GOamzTVopgCIZqizjrPQQ]
+ * @Class_Description The FragmentForVertSlide are fragment objects that are fed into the
+ *  VerticalViewPager instance via the customized FragmentPagerAdapter withing the
+ *  FragActivity_VertSlide class.  These fragments look like separate activities/pages, but they
+ *  are just Fragments containing a clickable image that opens the FragActivity_ImageGallery class
+ *
+ */
 package actrez.showcase;
 
 import android.content.Intent;
@@ -23,7 +38,7 @@ public class FragmentForVertSlide extends Fragment {
     private static final String TAG_URLs_ARRAY = "urls array key";
     private static final String TAG_IMAGECOUNT = "image_count";
     ImageLoader imageLoader;
-    String [] imageURL_array;
+    String[] imageURL_array;
     String title = "";
     String location = "";
     String description = "";
@@ -31,17 +46,19 @@ public class FragmentForVertSlide extends Fragment {
     Integer imageCount;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
+            savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_vertical_slide, container, false);
         Bundle bundle = getArguments();
 
         //Prepare image loader, and don't prevent it from re-initializing
-        this.imageLoader =ImageLoader.getInstance();
-        if (!this.imageLoader.isInited()){
+        this.imageLoader = ImageLoader.getInstance();
+        if (!this.imageLoader.isInited()) {
             imageLoader.destroy();//just in case
             imageLoader = ImageLoader.getInstance();
-            this.imageLoader.init(ImageLoaderConfiguration.createDefault(FragmentForVertSlide.this.getActivity().getApplicationContext()));
+            this.imageLoader.init(ImageLoaderConfiguration.createDefault(FragmentForVertSlide.this.
+                    getActivity().getApplicationContext()));
         }
 
         if (bundle != null) {
@@ -62,7 +79,9 @@ public class FragmentForVertSlide extends Fragment {
         textView3.setText(description);
         TextView textView4 = (TextView) view.findViewById(R.id.TextView_UnderImage_Layout);
         //Only click for gallery if there is one
-        if (imageURL_array.length>1){ textView4.setText("(Click Image For Gallery) "); }
+        if (imageURL_array.length > 1) {
+            textView4.setText("(Click Image For Gallery) ");
+        }
 
         ImageView imageView = (ImageView) view.findViewById(R.id.ImageView_Layout);
         this.imageLoader.displayImage(imageURL_array[0], imageView);
@@ -70,10 +89,12 @@ public class FragmentForVertSlide extends Fragment {
         imageView.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //do this when clicked...
-                if (imageURL_array[0].matches("https://5bf9fc6a06a40f21655de95c16758804f9ccd7fd.googledrive.com/host/0BxqBg0gGtrRkR1ktQ2FSQmNMR2s/no_images.png")) {
+                if (imageURL_array[0].matches("https://5bf9fc6a06a40f21655de95c16758804f9ccd7fd." +
+                        "googledrive.com/host/0BxqBg0gGtrRkR1ktQ2FSQmNMR2s/no_images.png")) {
                     Toast toast = new Toast(FragmentForVertSlide.this.getActivity());
                     toast.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL, 0, 0);
-                    Toast.makeText(FragmentForVertSlide.this.getActivity(), "Sorry, no images!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FragmentForVertSlide.this.getActivity(), "Sorry, no images!",
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     Intent in = new Intent(getActivity(), FragActivity_ImageGallery.class);
                     in.putExtra(TAG_URLs_ARRAY, imageURL_array);

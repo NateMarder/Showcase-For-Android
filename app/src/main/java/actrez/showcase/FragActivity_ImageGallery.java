@@ -1,3 +1,18 @@
+/**
+ * @Author Nate Marder [http://nathanmarder.com | https://github.com/NateMarder]
+ * @Company ActivityRez [http://activityrez.com]
+ * @Date 8/06/2014
+ * @Program_Description This program was designed as a type of kiosk-application which would allow
+ *  provide tourists and customers with a simple user interface within which they would be able to
+ *  peruse potential activities they would like to purchase.  For more info about ActivityRez and
+ *  their unique business model, see their YouTube channel below
+ *  [https://www.youtube.com/channel/UC9GOamzTVopgCIZqizjrPQQ]
+ * @Class_Description The FragActivity_ImageGallery class contains a ViewPager elements that
+ *  enables a full-screen horizontal-swipe-friendly image gallery.  Image data is fed to the
+ *  ViewPager element via a custom inner class GalleryImage, which extends the PagerAdapter class
+ *  (line 49).
+ *
+ */
 package actrez.showcase;
 
 import android.content.Context;
@@ -14,9 +29,6 @@ import android.widget.ImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
-/**
- * Created by Nathan on 7/30/2014.
- */
 public class FragActivity_ImageGallery extends FragmentActivity {
     ViewPager pager;
     String[] imageURLs;
@@ -27,21 +39,17 @@ public class FragActivity_ImageGallery extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
         setContentView(R.layout.viewpager_container_layout);
 
-        //The Exit Gallery Button...
-        Button exitGallery = (Button) findViewById(R.id.Button_ExitGallery);
-
+        Button exitGallery = (Button) findViewById(R.id.Button_ExitGallery);//The Exit Gallery Button
 
         Intent in = getIntent();//this data is being sent from FragtActivity_VertSlide
-        imageURLs=in.getStringArrayExtra(TAG_URLs_ARRAY);
+        imageURLs = in.getStringArrayExtra(TAG_URLs_ARRAY);
         pager = (ViewPager) findViewById(R.id.ViewPager_Horizontal);
         pager.setAdapter(new GalleryImage(FragActivity_ImageGallery.this, imageURLs));
         pager.setCurrentItem(pagerPosition);
 
-        exitGallery.setText("Exit Gallery ");
+        exitGallery.setText("Exit Gallery ");//The Exit Gallery Button now knows what to do
         exitGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +68,7 @@ public class FragActivity_ImageGallery extends FragmentActivity {
             this.images = images;
             inflater = getLayoutInflater();
             imageLoader = ImageLoader.getInstance();
-            if (!this.imageLoader.isInited()){
+            if (!this.imageLoader.isInited()) {
                 imageLoader.destroy();//just in case
                 imageLoader = ImageLoader.getInstance();
                 imageLoader.init(ImageLoaderConfiguration.createDefault(context));

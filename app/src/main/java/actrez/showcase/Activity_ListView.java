@@ -1,3 +1,19 @@
+/**
+ * @Author Nate Marder [http://nathanmarder.com | https://github.com/NateMarder]
+ * @Company ActivityRez [http://activityrez.com]
+ * @Date 8/06/2014
+ * @Program_Description This program was designed as a type of kiosk-application which would allow
+ *  provide tourists and customers with a simple user interface within which they would be able to
+ *  peruse potential activities they would like to purchase.  For more info about ActivityRez and
+ *  their unique business model, see their YouTube channel below
+ *  [https://www.youtube.com/channel/UC9GOamzTVopgCIZqizjrPQQ]
+ * @Class_Description The Activity_ListView class provides the user with a customized and vertically-scrollable listview
+ *  element to get a quick overview of possible activities to explore further.  Clicking on any
+ *  item within this listview launches the user into a detailed view of that item with images
+ *  (FragActivity_VertSlide call).  Data for the listview is fed from a a customized ArrayAdapter-
+ *  class called ListViewAdapter.
+ *
+ */
 package actrez.showcase;
 
 import android.app.ListActivity;
@@ -16,10 +32,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-/**
- * Created by Nathan on 7/29/2014.
- */
-
 public class Activity_ListView extends ListActivity {
     //object/data declarations...
     private static final String TAG_ACTIVITYNAME = "title";
@@ -32,7 +44,6 @@ public class Activity_ListView extends ListActivity {
     protected static ArrayList<RezObject> thisBook = new ArrayList<RezObject>();
     protected static Intent i;
     protected static ListView mainListView;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,7 +61,12 @@ public class Activity_ListView extends ListActivity {
         ListAdapter rezdapter = new ListViewAdapter(Activity_ListView.this, R.layout.listview_singlerow_layout, thisBook);
         setListAdapter(rezdapter);
 
-        //Where to go next, method 1 or method 2....
+        /**
+         * This Switch statement is remnant from when there were two different methods for viewing
+         * activities, it's still here so that switching back to the initial method which uses the
+         * FragActivity_NestedGallery class can be re-initiated...  by default now, the option will
+         * always be '2', resulting in 'case 2' being used.
+         */
         switch (option) {
             case 1: // case one intent initiates FragActivity_NestedGallery
                 mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -72,7 +88,7 @@ public class Activity_ListView extends ListActivity {
                 mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent in = new Intent(Activity_ListView.this, FragtActivity_VertSlide.class);
+                        Intent in = new Intent(Activity_ListView.this, FragActivity_VertSlide.class);
                         in.putExtra(TAG_POSITION, position);
                         startActivity(in);
                     }
@@ -83,10 +99,9 @@ public class Activity_ListView extends ListActivity {
                 mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Toast toast = new Toast(Activity_ListView.this);
-                        toast.makeText(Activity_ListView.this, "Hmmmm...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Activity_ListView.this, "Hmmmm...", Toast.LENGTH_SHORT).show();
                         //even though something went wrong lets not stop the action....
-                        Intent in = new Intent(Activity_ListView.this, FragtActivity_VertSlide.class);
+                        Intent in = new Intent(Activity_ListView.this, FragActivity_VertSlide.class);
                         in.putExtra(TAG_POSITION, position);
                         startActivity(in);
                     }
@@ -95,13 +110,12 @@ public class Activity_ListView extends ListActivity {
         }//ends switch statement that sets mainListView.setOnItemClickListener
     }
 
-
     /**
      * This ListViewAdapter extends the ArrayAdapter class, and is responsible
      * for feeding data into the ListView element within the Activity_MainOptions
      * activity.
      */
-    public class ListViewAdapter extends ArrayAdapter<RezObject> {
+    private class ListViewAdapter extends ArrayAdapter<RezObject> {
         ArrayList<RezObject> activitiesToDisplay;
         Context context;
         int resource;
@@ -138,7 +152,7 @@ public class Activity_ListView extends ListActivity {
             }
             String title = activitiesToDisplay.get(position).getTitle();
             String location = activitiesToDisplay.get(position).getDest();/*+" image count: "+activitiesToDisplay.get(position).getImageCount();*/
-            String imageCount = "Images: "+activitiesToDisplay.get(position).getImageCount()+" ";
+            String imageCount = "Images: " + activitiesToDisplay.get(position).getImageCount() + " ";
             String description = activitiesToDisplay.get(position).getDesc();
             holder.txtTitle.setText(title);
             holder.txtLocation.setText(location);

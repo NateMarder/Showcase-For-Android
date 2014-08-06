@@ -1,3 +1,21 @@
+/**
+ * @Author Nate Marder [http://nathanmarder.com | https://github.com/NateMarder]
+ * @Company ActivityRez [http://activityrez.com]
+ * @Date 8/06/2014
+ * @Program_Description This program was designed as a type of kiosk-application which would allow
+ *  provide tourists and customers with a simple user interface within which they would be able to
+ *  peruse potential activities they would like to purchase.  For more info about ActivityRez and
+ *  their unique business model, see their YouTube channel below
+ *  [https://www.youtube.com/channel/UC9GOamzTVopgCIZqizjrPQQ]
+ * @Class_Description the FragActivity_VertSlide class allows user to swipe vertically through FragmentForVertSlide -
+ *  fragments which show all the information for an activity.  This class' functioning is supported
+ *  by two other classes: the VerticalViewPager class and a private-inner class called
+ *  FragPagerAdapter, which extends the FragmentPagerAdapter class.  The FragmentPagerAdapter feeds
+ *  data into the VerticalViewPager instance (line 49).  This class knows tells the
+ *  VerticalViewPager instance where to begin through data received from an intent from the
+ *  Activity_ListView (line 43-44).
+ *
+ */
 package actrez.showcase;
 
 import android.content.Context;
@@ -10,7 +28,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 
-public class FragtActivity_VertSlide extends FragmentActivity {
+public class FragActivity_VertSlide extends FragmentActivity {
 
     protected static ArrayList<RezObject> thisBook = new ArrayList<RezObject>();
     private static final String TAG_POSITION = "position";
@@ -18,12 +36,12 @@ public class FragtActivity_VertSlide extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        thisBook= Activity_Splash.getBook();
+        thisBook = Activity_Splash.getBook();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.factivity2_layout);
 
-        Intent i = getIntent(); //comes from the ListViewActivity2 's  onclick listener
-        indexPosition = i.getIntExtra(TAG_POSITION,0);
+        Intent i = getIntent(); //comes from the Activity_ListView  onclick listener
+        indexPosition = i.getIntExtra(TAG_POSITION, 0);
 
         //This setup enables vertical swiping of fragment elements
         FragPagerAdapter fragPagerAdapter = new FragPagerAdapter(getSupportFragmentManager(), getApplicationContext());
@@ -70,18 +88,18 @@ public class FragtActivity_VertSlide extends FragmentActivity {
         public Fragment getItem(int index) {
             //bundle is needed to create FragmentForVertSlide instances
             Bundle bundle = new Bundle(); // Goes to FragmentForVertSlide
-            bundle.putString(TitleKey,titles[index]);
-            bundle.putString(NewDescriptionKey,descriptions[index]);
-            bundle.putString(LocationKey,locations[index]);
+            bundle.putString(TitleKey, titles[index]);
+            bundle.putString(NewDescriptionKey, descriptions[index]);
+            bundle.putString(LocationKey, locations[index]);
             bundle.putStringArray(URLsKey_Array, urls_arraylist_of_arrays.get(index));
-            bundle.putInt(PositionKey,index);
+            bundle.putInt(PositionKey, index);
             FragmentForVertSlide fragVerticalSlide = new FragmentForVertSlide();
             fragVerticalSlide.setArguments(bundle);
             return fragVerticalSlide;
         }
 
         @Override
-        public CharSequence getPageTitle(int position){
+        public CharSequence getPageTitle(int position) {
             return titles[position];
         }
 

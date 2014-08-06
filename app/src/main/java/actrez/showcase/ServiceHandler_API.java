@@ -1,3 +1,17 @@
+/**
+ * @Author Nate Marder [http://nathanmarder.com | https://github.com/NateMarder]
+ * @Company ActivityRez [http://activityrez.com]
+ * @Date 8/06/2014
+ * @Program_Description This program was designed as a type of kiosk-application which would allow
+ *  provide tourists and customers with a simple user interface within which they would be able to
+ *  peruse potential activities they would like to purchase.  For more info about ActivityRez and
+ *  their unique business model, see their YouTube channel below
+ *  [https://www.youtube.com/channel/UC9GOamzTVopgCIZqizjrPQQ]
+ * @Class_Description The ServiceHandler_API class is has the ability to make service calls,
+ *  and which are are needed to gather json data, which is used to in the Activity_Splash 's inner
+ *  and asynchronous class, populateRezActs, which is the only class to currently call this class
+ *
+ */
 package actrez.showcase;
 
 import org.apache.http.HttpEntity;
