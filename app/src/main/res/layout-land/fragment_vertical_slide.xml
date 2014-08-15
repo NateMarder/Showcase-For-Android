@@ -26,7 +26,7 @@
             android:paddingLeft="20dp"
             android:paddingTop="20dp"
             android:paddingRight="20dp"
-            android:paddingBottom="50dp" />
+            android:paddingBottom="30dp" />
     </FrameLayout>
 
     <!--    Left Side of Screen With Words-->
@@ -42,7 +42,7 @@
         android:layout_alignParentLeft="true"
         android:paddingLeft="20dp"
         android:weightSum="1"
-        android:paddingRight="10dp">
+        android:paddingRight="20dp">
         <!-- location label -->
         <!-- description label -->
 
@@ -56,8 +56,7 @@
             android:textColor="#FFC8C8C8"
             android:textSize="40sp"
             android:gravity="left"
-            android:textStyle="italic"
-            android:paddingRight="10dp" />
+            android:textStyle="italic" />
 
         <TextView
             android:id="@+id/TextView_Layout3"
@@ -68,8 +67,7 @@
             android:textSize="30sp"
             android:background="#FF212121"
             android:textColor="#ffadadad"
-            android:layout_gravity="center_horizontal|top"
-            android:paddingRight="10dp" />
+            android:layout_gravity="center_horizontal|top" />
 
     </LinearLayout>
 
@@ -89,19 +87,18 @@
         android:gravity="center_horizontal|top"
         android:weightSum="1"
         android:paddingRight="20dp"
-        android:paddingLeft="10dp">
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp">
         <ImageView
             android:id="@+id/ImageView_Layout"
             android:isScrollContainer="false"
             android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:src="@drawable/logo_fullsize"
-            android:layout_gravity="center"
-            android:paddingRight="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="15dp" />
-
+            android:layout_gravity="center" />
+        <!--Click Image For Gallery Text  -->
         <TextView
             android:id="@+id/TextView_UnderImage_Layout"
             android:isScrollContainer="true"
@@ -111,11 +108,7 @@
             android:background="#FF212121"
             android:textColor="#ff8f8f8f"
             android:textSize="20sp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:paddingLeft="10dp"
-            android:paddingTop="2dp"
-            android:paddingRight="10dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:paddingTop="5dp" />
     </LinearLayout>
 </RelativeLayout>

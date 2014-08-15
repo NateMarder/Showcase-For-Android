@@ -32,8 +32,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
+            android:adjustViewBounds="true"
             android:src="@drawable/no_image_found" />
-
+        <!--Click Image For Gallery Text-->
         <TextView
             android:id="@+id/TextView_UnderImage_Layout"
             android:isScrollContainer="true"

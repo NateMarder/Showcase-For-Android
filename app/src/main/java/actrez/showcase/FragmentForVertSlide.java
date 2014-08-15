@@ -37,13 +37,13 @@ public class FragmentForVertSlide extends Fragment {
     private static final String PositionKey = "position_key";
     private static final String TAG_URLs_ARRAY = "urls array key";
     private static final String TAG_IMAGECOUNT = "image_count";
-    ImageLoader imageLoader;
-    String[] imageURL_array;
-    String title = "";
-    String location = "";
-    String description = "";
-    Integer currentPosition = 0;
-    Integer imageCount;
+    protected ImageLoader imageLoader;
+    protected String[] imageURL_array;
+    protected String title = "";
+    protected String location = "";
+    protected String description = "";
+    protected Integer currentPosition = 0;
+    protected Integer imageCount;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
@@ -54,9 +54,9 @@ public class FragmentForVertSlide extends Fragment {
 
         //Prepare image loader, and don't prevent it from re-initializing
         this.imageLoader = ImageLoader.getInstance();
-        if (!this.imageLoader.isInited()) {
-            imageLoader.destroy();//just in case
-            imageLoader = ImageLoader.getInstance();
+        if (!this.imageLoader.isInited()) { //if for some reason the image loader needs to be initialized
+            imageLoader.destroy(); //destroy any remnants of the old
+            imageLoader = ImageLoader.getInstance(); //get the new
             this.imageLoader.init(ImageLoaderConfiguration.createDefault(FragmentForVertSlide.this.
                     getActivity().getApplicationContext()));
         }
@@ -78,7 +78,7 @@ public class FragmentForVertSlide extends Fragment {
         TextView textView3 = (TextView) view.findViewById(R.id.TextView_Layout3);
         textView3.setText(description);
         TextView textView4 = (TextView) view.findViewById(R.id.TextView_UnderImage_Layout);
-        //Only click for gallery if there is one
+        //Only set text if there is more than one image...
         if (imageURL_array.length > 1) {
             textView4.setText("(Click Image For Gallery) ");
         }
@@ -86,11 +86,12 @@ public class FragmentForVertSlide extends Fragment {
         ImageView imageView = (ImageView) view.findViewById(R.id.ImageView_Layout);
         this.imageLoader.displayImage(imageURL_array[0], imageView);
         imageView.isClickable();
+
+        //set onclick listener for the imageView object--> if clicked user goes to gallery or is told no images
         imageView.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //do this when clicked...
-                if (imageURL_array[0].matches("https://5bf9fc6a06a40f21655de95c16758804f9ccd7fd." +
-                        "googledrive.com/host/0BxqBg0gGtrRkR1ktQ2FSQmNMR2s/no_images.png")) {
+                if (imageURL_array[0].matches(getString(R.string.no_image_url))){
                     Toast toast = new Toast(FragmentForVertSlide.this.getActivity());
                     toast.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL, 0, 0);
                     Toast.makeText(FragmentForVertSlide.this.getActivity(), "Sorry, no images!",

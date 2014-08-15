@@ -14,6 +14,8 @@
  *  class called ListViewAdapter.
  *
  */
+
+
 package actrez.showcase;
 
 import android.app.ListActivity;
@@ -28,21 +30,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class Activity_ListView extends ListActivity {
     //object/data declarations...
-    private static final String TAG_ACTIVITYNAME = "title";
-    private static final String TAG_DESCRIPTION = "shortDesc";
-    private static final String TAG_DESTINATION = "destination";
-    private static final String TAG_URLs = "urls_arraylist_of_arrays";
     private static final String TAG_POSITION = "position";
-    private static final String TAG_SIZE = "size";
-    private static final String TAG_OPTION = "1";
     protected static ArrayList<RezObject> thisBook = new ArrayList<RezObject>();
-    protected static Intent i;
     protected static ListView mainListView;
 
     @Override
@@ -53,61 +47,19 @@ public class Activity_ListView extends ListActivity {
         mainListView = getListView();
         thisBook = Activity_Splash.getBook();
 
-        //get the user's choice so we know which onClickListener to initiate
-        i = getIntent();
-        int option = i.getIntExtra(TAG_OPTION, -1);
-
         //populate the Listview using data supplied by the rezdapter
         ListAdapter rezdapter = new ListViewAdapter(Activity_ListView.this, R.layout.listview_singlerow_layout, thisBook);
         setListAdapter(rezdapter);
 
-        /**
-         * This Switch statement is remnant from when there were two different methods for viewing
-         * activities, it's still here so that switching back to the initial method which uses the
-         * FragActivity_NestedGallery class can be re-initiated...  by default now, the option will
-         * always be '2', resulting in 'case 2' being used.
-         */
-        switch (option) {
-            case 1: // case one intent initiates FragActivity_NestedGallery
-                mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent in = new Intent(Activity_ListView.this, FragActivity_NestedGallery.class);
-                        in.putExtra(TAG_ACTIVITYNAME, thisBook.get(position).getTitle());
-                        in.putExtra(TAG_DESTINATION, thisBook.get(position).getDest());
-                        in.putExtra(TAG_DESCRIPTION, thisBook.get(position).getDesc());
-                        in.putExtra(TAG_POSITION, position);
-                        in.putExtra(TAG_SIZE, thisBook.size());
-                        in.putStringArrayListExtra(TAG_URLs, thisBook.get(position).getImageURLCollection());
-                        startActivity(in);
-                    }
-                });
-                break;
-
-            case 2: // case two intent initiates FragActivity_VerticalSlide
-                mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent in = new Intent(Activity_ListView.this, FragActivity_VertSlide.class);
-                        in.putExtra(TAG_POSITION, position);
-                        startActivity(in);
-                    }
-                });
-                break;
-
-            case -1: // case -1 means something went wrong, but user still goes to FragActivity_VerticalSlide
-                mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Toast.makeText(Activity_ListView.this, "Hmmmm...", Toast.LENGTH_SHORT).show();
-                        //even though something went wrong lets not stop the action....
-                        Intent in = new Intent(Activity_ListView.this, FragActivity_VertSlide.class);
-                        in.putExtra(TAG_POSITION, position);
-                        startActivity(in);
-                    }
-                });
-                break;
-        }//ends switch statement that sets mainListView.setOnItemClickListener
+        //set the onITEM click listener for the ListView instance called mainListView
+        mainListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent in = new Intent(Activity_ListView.this, FragActivity_VertSlide.class);
+                in.putExtra(TAG_POSITION, position);
+                startActivity(in);
+            }
+        });
     }
 
     /**
@@ -116,18 +68,43 @@ public class Activity_ListView extends ListActivity {
      * activity.
      */
     private class ListViewAdapter extends ArrayAdapter<RezObject> {
-        ArrayList<RezObject> activitiesToDisplay;
+        /*        ArrayList<RezObject> activitiesToDisplay;*/
         Context context;
-        int resource;
+        private int resource;
+        private String[] lvTitles;
+        private String[] lvLocations;
+        private String[] lvDescriptions;
+        private int[] lvImageCounts;
+        private int size;
 
         public ListViewAdapter(Context context, int resource, ArrayList<RezObject> objects) {
             super(context, resource, objects);
             this.resource = resource;
             this.context = context;
-            this.activitiesToDisplay = objects;
+            size = objects.size();
+
+            lvTitles = new String[size];
+            for (int i = 0; i < objects.size(); i++) {
+                lvTitles[i] = objects.get(i).getTitle();
+            }
+
+            lvLocations = new String[size];
+            for (int i = 0; i < objects.size(); i++) {
+                lvLocations[i] = objects.get(i).getDest();
+            }
+
+            lvDescriptions = new String[size];
+            for (int i = 0; i < objects.size(); i++) {
+                lvDescriptions[i] = objects.get(i).getDesc();
+            }
+
+            lvImageCounts = new int[size];
+            for (int i = 0; i < objects.size(); i++) {
+                lvImageCounts[i] = objects.get(i).getImageCount();
+            }
         }
 
-        public class ViewHolder {
+        private class ViewHolder {
             TextView txtTitle;
             TextView txtLocation;
             TextView txtImageCount;
@@ -136,7 +113,7 @@ public class Activity_ListView extends ListActivity {
 
         @Override
         public View getView(int position, View view, ViewGroup parent) {
-            ViewHolder holder = null;
+            ViewHolder holder;// = null;
 
             if (view == null) {
                 LayoutInflater inflater = Activity_ListView.this.getLayoutInflater();
@@ -150,15 +127,11 @@ public class Activity_ListView extends ListActivity {
             } else {
                 holder = (ViewHolder) view.getTag();
             }
-            String title = activitiesToDisplay.get(position).getTitle();
-            String location = activitiesToDisplay.get(position).getDest();/*+" image count: "+activitiesToDisplay.get(position).getImageCount();*/
-            String imageCount = "Images: " + activitiesToDisplay.get(position).getImageCount() + " ";
-            String description = activitiesToDisplay.get(position).getDesc();
-            holder.txtTitle.setText(title);
-            holder.txtLocation.setText(location);
-            holder.txtImageCount.setText(imageCount);
-            holder.txtDescription.setText(description);
 
+            holder.txtTitle.setText(lvTitles[position]);
+            holder.txtLocation.setText(lvLocations[position]);
+            holder.txtImageCount.setText("Images: " + lvImageCounts[position] + " ");
+            holder.txtDescription.setText(lvDescriptions[position]);
             return view;
         }
 

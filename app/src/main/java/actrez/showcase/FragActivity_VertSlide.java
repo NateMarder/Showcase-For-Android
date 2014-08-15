@@ -87,12 +87,12 @@ public class FragActivity_VertSlide extends FragmentActivity {
         @Override
         public Fragment getItem(int index) {
             //bundle is needed to create FragmentForVertSlide instances
-            Bundle bundle = new Bundle(); // Goes to FragmentForVertSlide
-            bundle.putString(TitleKey, titles[index]);
-            bundle.putString(NewDescriptionKey, descriptions[index]);
-            bundle.putString(LocationKey, locations[index]);
-            bundle.putStringArray(URLsKey_Array, urls_arraylist_of_arrays.get(index));
-            bundle.putInt(PositionKey, index);
+            Bundle bundle = new Bundle(); // Goes to the Fragment Class "FragmentForVertSlide"....
+            bundle.putString(TitleKey, titles[index]); //Title of Activity
+            bundle.putString(NewDescriptionKey, descriptions[index]); //Description of Activity
+            bundle.putString(LocationKey, locations[index]); //Location of Activity
+            bundle.putStringArray(URLsKey_Array, urls_arraylist_of_arrays.get(index)); //Associated image URLs
+            bundle.putInt(PositionKey, index); //which activity to display
             FragmentForVertSlide fragVerticalSlide = new FragmentForVertSlide();
             fragVerticalSlide.setArguments(bundle);
             return fragVerticalSlide;

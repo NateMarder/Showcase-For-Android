@@ -29,7 +29,6 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import java.util.ArrayList;
 
 public class Activity_MainOptions extends Activity {
-    private static final String TAG_OPTION = "1";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,6 @@ public class Activity_MainOptions extends Activity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Activity_MainOptions.this, Activity_ListView.class);
-                i.putExtra(TAG_OPTION, 2);
                 startActivity(i);
             }
         });
@@ -70,8 +68,8 @@ public class Activity_MainOptions extends Activity {
         });
 
         if (!ImageLoader.getInstance().isInited()) {
-            setImageLoader();
-        }// Set up Universal ImageLoader
+            setImageLoader();// Set up Universal ImageLoader
+        }
     }
 
     private void setImageLoader() {
@@ -85,7 +83,7 @@ public class Activity_MainOptions extends Activity {
 
         defaultOptions = new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
-                .showImageOnFail(R.drawable.no_image_found) // resource or drawable
+                .showImageOnFail(R.drawable.no_image_found) //will not show with current configuration of RezObject getURL collection methods
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2)
                 .cacheOnDisk(true)

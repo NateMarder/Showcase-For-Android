@@ -138,8 +138,7 @@ public class RezObject implements Parcelable {
         //avoid null pointer exceptions...
         if (imageURLS_arraylist.size() == 0) {
             //no image available image hosted within a public folder within google drive
-            String emptyURL = "https://5bf9fc6a06a40f21655de95c16758804f9ccd7fd.googledrive.com/host/0BxqBg0gGtrRkR1ktQ2FSQmNMR2s/no_images.png";
-            imageURLS_arraylist.add(emptyURL);
+            imageURLS_arraylist.add("https://5bf9fc6a06a40f21655de95c16758804f9ccd7fd.googledrive.com/host/0BxqBg0gGtrRkR1ktQ2FSQmNMR2s/no_images.png");
         }
         //convert arraylist <String> to String[]
         this.imageURLs_array = new String[imageURLS_arraylist.size()];

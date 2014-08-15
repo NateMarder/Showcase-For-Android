@@ -20,5 +20,6 @@
     <string name="application_name_main">Welcome to Showcase</string>
     <string name="hello_from_main">Hello from main activity!</string>
     <string name="title_activity_splash">Splash</string>
+    <string name="no_image_url">https://5bf9fc6a06a40f21655de95c16758804f9ccd7fd.googledrive.com/host/0BxqBg0gGtrRkR1ktQ2FSQmNMR2s/no_images.png</string>
 
 </resources>
