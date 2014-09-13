@@ -11,7 +11,6 @@
         android:contentDescription="@string/content_description_splash"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
         android:src="@drawable/logo_fullsize"
         android:gravity="center"
         android:paddingLeft="20dp"
@@ -27,6 +26,5 @@
         android:text="@string/application_name_splash"
         android:textStyle="italic"
         android:gravity="center_horizontal" />
-
 
 </LinearLayout>

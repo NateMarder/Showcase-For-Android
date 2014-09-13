@@ -19,14 +19,14 @@
             android:layout_height="wrap_content"
             android:text="@string/activity_title"
             android:background="#FF212121"
-            android:textColor="#ff2063ff"
+            android:textColor="#ff0074be"
             android:textSize="50sp"
             android:isScrollContainer="true"
             android:gravity="center_horizontal|left"
             android:paddingLeft="20dp"
             android:paddingTop="20dp"
             android:paddingRight="20dp"
-            android:paddingBottom="30dp" />
+            android:paddingBottom="10dp" />
     </FrameLayout>
 
     <!--    Left Side of Screen With Words-->
@@ -62,7 +62,7 @@
             android:id="@+id/TextView_Layout3"
             android:layout_width="fill_parent"
             android:isScrollContainer="true"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/activity_description"
             android:textSize="30sp"
             android:background="#FF212121"
@@ -93,11 +93,12 @@
             android:id="@+id/ImageView_Layout"
             android:isScrollContainer="false"
             android:clickable="true"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxHeight="350dp"
             android:adjustViewBounds="true"
             android:src="@drawable/logo_fullsize"
-            android:layout_gravity="center" />
+            android:layout_gravity="top|center" />
         <!--Click Image For Gallery Text  -->
         <TextView
             android:id="@+id/TextView_UnderImage_Layout"
