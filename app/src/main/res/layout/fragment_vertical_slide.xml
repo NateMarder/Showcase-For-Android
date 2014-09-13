@@ -32,7 +32,7 @@
             android:clickable="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxHeight="275dp"
+            android:maxHeight="325dp"
             android:layout_gravity="left"
             android:adjustViewBounds="true"
             android:src="@drawable/no_image_found" />
@@ -67,15 +67,14 @@
             android:textColor="#ff0074be"
             android:textSize="50sp"
             android:paddingBottom="10dp"
-            android:gravity="left"
-            android:paddingTop="30dp" />
+            android:gravity="left|top"
+            android:paddingTop="5dp" />
 
         <TextView
             android:id="@+id/TextView_Layout2"
             android:isScrollContainer="true"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="6dip"
             android:text="@string/activity_location"
             android:textSize="40sp"
             android:background="#FF212121"
@@ -90,7 +89,7 @@
             android:isScrollContainer="true"
             android:layout_height="wrap_content"
             android:text="@string/activity_description"
-            android:textSize="30sp"
+            android:textSize="28sp"
             android:background="#FF212121"
             android:textColor="#FFC8C8C8"/>
 

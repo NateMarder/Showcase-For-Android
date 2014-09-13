@@ -9,19 +9,20 @@
     <ImageView
         android:id="@+id/imageView_splash"
         android:contentDescription="@string/content_description_splash"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/logo_fullsize"
+        android:adjustViewBounds="true"
         android:gravity="center"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp" />
+        android:padding="20dp"/>
 
     <TextView
         android:id="@+id/textView_splash"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:textSize="30sp"
+        android:padding="20dp"
+        android:textSize="20sp"
         android:textColor="#ff8f8f8f"
         android:text="@string/application_name_splash"
         android:textStyle="italic"
