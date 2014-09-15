@@ -95,6 +95,14 @@ public class PrefActivity_Settings extends PreferenceActivity {
         }
     }
 
+    @Override
+    protected boolean isValidFragment (String fragmentName)
+    {
+        if(GeneralPreferenceFragment.class.getName().equals(fragmentName))
+            return true;
+        return false;
+    }
+
     private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
